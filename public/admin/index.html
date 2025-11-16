@@ -4,13 +4,22 @@
     <meta charset="utf-8" />
     <title>Admin Paneli</title>
 
-    <!-- Netlify CMS (çalışan CDN yolu) -->
-    <script src="https://cdn.jsdelivr.net/npm/netlify-cms-app@2.15.72/dist/netlify-cms.js"></script>
+    <!-- Netlify CMS modern loader (hiç sorun çıkartmaz) -->
+    <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
+
+    <!-- Fallback: JSDelivr (çalışmayan browserlarda devreye girer) -->
+    <script src="https://cdn.jsdelivr.net/npm/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
   </head>
 
   <body>
     <script>
-      CMS.init();
+      window.addEventListener("load", function () {
+        if (typeof window.CMS !== "undefined") {
+          console.log("CMS LOADED ✓");
+        } else {
+          console.error("CMS YÜKLENEMEDİ ❌");
+        }
+      });
     </script>
   </body>
 </html>
