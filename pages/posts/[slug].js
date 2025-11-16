@@ -1,46 +1,65 @@
-import { getAllPosts, getPostBySlug } from "../../lib/posts"
-import Link from "next/link"
-import Layout from "../../components/Layout"
-import { marked } from "marked"
-
 export default function PostPage({ post }) {
-  const html = marked(post.content || "")
+  if (!post) return <div>Yazı bulunamadı</div>;
 
   return (
-    <Layout>
-      <article className="bg-white p-6 rounded-xl shadow-sm">
-        <h1 className="text-3xl font-bold text-pink-500 mb-2">{post.title}</h1>
+    <>
+      <main
+        style={{
+          maxWidth: "900px",
+          margin: "40px auto",
+          background: "white",
+          padding: "40px",
+          borderRadius: "20px",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+        }}
+      >
+        <h1 style={{ color: "#ff4f9a" }}>{post.title}</h1>
 
-        {post.date && (
-          <p className="text-sm text-gray-500 mb-6">
-            {new Date(post.date).toLocaleDateString("tr-TR")}
-          </p>
-        )}
+        <div style={{ color: "#666", marginBottom: 20 }}>{post.date}</div>
 
-        <div
-          className="prose prose-pink max-w-none"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <div className="post-detail-text">{post.text}</div>
 
-        <Link
-          href="/"
-          className="block mt-6 text-pink-500 hover:underline"
-        >
-          ← Bloga geri dön
-        </Link>
-      </article>
-    </Layout>
-  )
+        <div style={{ marginTop: 20 }}>
+          <a href="/" style={{ color: "#ff4f9a" }}>← Bloga dön</a>
+        </div>
+      </main>
+    </>
+  );
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts()
+  const BIN_ID = process.env.JSONBIN_ID;
+  const API_KEY = process.env.JSONBIN_API_KEY;
+
+  const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+    headers: { "X-Master-Key": API_KEY },
+  });
+
+  const data = await res.json();
+  const posts = data.record?.posts || [];
+
   return {
-    paths: posts.map((p) => ({ params: { slug: p.slug } })),
+    paths: posts.map((p) => ({
+      params: { slug: p.slug },
+    })),
     fallback: false,
-  }
+  };
 }
 
 export async function getStaticProps({ params }) {
-  return { props: { post: getPostBySlug(params.slug) } }
+  const BIN_ID = process.env.JSONBIN_ID;
+  const API_KEY = process.env.JSONBIN_API_KEY;
+
+  const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+    headers: { "X-Master-Key": API_KEY },
+  });
+
+  const data = await res.json();
+  const posts = data.record?.posts || [];
+
+  const post = posts.find((p) => p.slug === params.slug);
+
+  return {
+    props: { post },
+  };
 }

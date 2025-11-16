@@ -1,18 +1,29 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="w-full bg-white shadow-sm py-4 mb-8">
-      <div className="max-w-2xl mx-auto flex items-center justify-between px-4">
-        <Link href="/" className="text-xl font-bold text-pink-500">
-          🌸 My Blog
-        </Link>
+    <nav
+      style={{
+        width: "100%",
+        padding: "18px 0",
+        background: "#ffd2eb",
+        display: "flex",
+        justifyContent: "center",
+        gap: "40px",
+        position: "sticky",
+        top: 0,
+        zIndex: 999,
+        backdropFilter: "blur(8px)",
+        boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+      }}
+    >
+      <Link href="/" style={{ fontWeight: "600", color: "#ff4fa8" }}>
+        Blog
+      </Link>
 
-        <div className="space-x-4 text-gray-600">
-          <Link href="/about" className="hover:text-pink-500 transition">Hakkımda</Link>
-          <Link href="/admin/" className="hover:text-pink-500 transition">Admin</Link>
-        </div>
-      </div>
+      <Link href="/about" style={{ fontWeight: "600", color: "#ff4fa8" }}>
+        Hakkımda
+      </Link>
     </nav>
-  )
+  );
 }
