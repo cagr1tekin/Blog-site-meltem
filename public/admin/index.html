@@ -2,24 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Admin Paneli</title>
-
-    <!-- Doğru Netlify CMS bundle -->
-    <script src="https://unpkg.com/netlify-cms-app@2.15.72/dist/netlify-cms-app.js"></script>
+    <title>Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.3/dist/decap-cms.js"></script>
   </head>
-
   <body>
-    <div id="nc-root"></div>
-
     <script>
-      window.addEventListener("load", function () {
-        if (typeof window.CMS !== "undefined") {
-          console.log("CMS LOADED ✓");
-          CMS.init();
-        } else {
-          console.error("CMS YÜKLENEMEDİ ❌");
-        }
-      });
+      CMS.init();
     </script>
   </body>
 </html>
