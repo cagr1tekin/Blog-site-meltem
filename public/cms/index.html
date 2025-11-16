@@ -1,24 +1,19 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Admin Panel</title>
-
-    <!-- Decap CMS Standalone -->
+    <meta charset="utf-8" />
+    <title>CMS Panel</title>
     <script src="https://unpkg.com/decap-cms@3.2.0/dist/decap-cms.js"></script>
   </head>
-
   <body>
-    <!-- CMS root -->
     <div id="nc-root"></div>
-
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         if (typeof window.DecapCms !== "undefined") {
-          console.log("Decap CMS Loaded ✓");
+          console.log("CMS LOADED ✓");
           window.DecapCms.init();
         } else {
-          console.error("Decap CMS YÜKLENEMEDİ");
+          console.error("CMS YÜKLENEMEDİ ❌");
         }
       });
     </script>
