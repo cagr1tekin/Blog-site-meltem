@@ -48,7 +48,6 @@ body {
 }
 .background-icons {
   background: #ffe5f2;
-  background-image: url('/icons/pink-1.png'), url('/icons/pink-2.png'), url('/icons/pink-3.png');
   background-repeat: repeat;
   animation: floatIcons 50s linear infinite;
 }
