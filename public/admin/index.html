@@ -4,18 +4,17 @@
     <meta charset="utf-8" />
     <title>Admin Paneli</title>
 
-    <!-- Netlify CMS loader -->
-    <script src="https://cdn.jsdelivr.net/npm/netlify-cms-app@2.15.72/dist/netlify-cms.js"></script>
+    <!-- Doğru Netlify CMS bundle -->
+    <script src="https://unpkg.com/netlify-cms-app@2.15.72/dist/netlify-cms-app.js"></script>
   </head>
 
   <body>
-    <!-- CMS'in mount olacağı eleman -->
     <div id="nc-root"></div>
 
     <script>
       window.addEventListener("load", function () {
         if (typeof window.CMS !== "undefined") {
-          console.log("CMS yüklendi ✓");
+          console.log("CMS LOADED ✓");
           CMS.init();
         } else {
           console.error("CMS YÜKLENEMEDİ ❌");
