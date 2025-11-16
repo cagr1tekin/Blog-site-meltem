@@ -1,13 +1,26 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Admin</title>
-    <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.0.3/dist/decap-cms.js"></script>
+    <meta charset="utf-8">
+    <title>Admin Panel</title>
+
+    <!-- Decap CMS Standalone -->
+    <script src="https://unpkg.com/decap-cms@3.2.0/dist/decap-cms.js"></script>
   </head>
+
   <body>
+    <!-- CMS root -->
+    <div id="nc-root"></div>
+
     <script>
-      CMS.init();
+      document.addEventListener("DOMContentLoaded", () => {
+        if (typeof window.DecapCms !== "undefined") {
+          console.log("Decap CMS Loaded ✓");
+          window.DecapCms.init();
+        } else {
+          console.error("Decap CMS YÜKLENEMEDİ");
+        }
+      });
     </script>
   </body>
 </html>
