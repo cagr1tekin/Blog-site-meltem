@@ -10,7 +10,7 @@ export default function Navbar() {
 
         <div className="space-x-4 text-gray-600">
           <Link href="/about" className="hover:text-pink-500 transition">Hakkımda</Link>
-          <Link href="/admin" className="hover:text-pink-500 transition">Admin</Link>
+          <Link href="/admin/" className="hover:text-pink-500 transition">Admin</Link>
         </div>
       </div>
     </nav>
