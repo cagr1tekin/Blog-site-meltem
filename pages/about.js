@@ -40,7 +40,7 @@ export default function About() {
           }}
         >
           <Image
-            src="/fotograf.jpeg"
+            src="/yenge.jpg"
             alt="Meltem"
             width={160}
             height={160}
@@ -120,14 +120,14 @@ export default function About() {
           <p style={{ color: "#888" }}>Bana ulaşmak istersen 💌</p>
 
           <a
-            href="mailto:meltem@example.com"
+            href="mailto:meltemkyby@icloud.com"
             style={{
               color: "#ff4f9a",
               textDecoration: "underline",
               fontWeight: "500",
             }}
           >
-            meltem@example.com
+            meltemkyby@icloud.com
           </a>
         </div>
       </motion.div>
